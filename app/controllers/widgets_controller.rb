@@ -5,8 +5,9 @@ class WidgetsController < ApplicationController
   caches_action :index
   caches_page :show
   def index
-    @widgets = Widget.all_active
-
+    @widgets = Rails.cache.fetch(params.to_a.join(":"),:expires_in=>CACHE_TIMEOUT) do
+      Widget.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @widgets }
