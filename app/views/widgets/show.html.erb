@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @widget.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @widget.description %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @widget.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_widget_path(@widget) %> |
+<%= link_to 'Back', widgets_path %>
