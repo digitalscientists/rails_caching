@@ -15,7 +15,13 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   def setup
-   
+    @page = (params[:page] || 1).to_i
+    @page = 1 if @page < 1
+    @per_page = (params[:per_page] || (RAILS_ENV=='test' ? 1 : 40)).to_i
+  end
+  
+  def cache_key
+    params.to_a.join(":")
   end
   
 end

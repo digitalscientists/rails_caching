@@ -1,4 +1,6 @@
 class Widget < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 50
   def self.all_active
     #caches(:all, :expires_in=>CACHE_TIMEOUT, :with=>{:conditions=>'active=1'})
     # Rails.cache.fetch("boo",:expires_in=>2.seconds) do

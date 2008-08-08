@@ -11,7 +11,7 @@ class AppSweeper < ActionController::Caching::Sweeper
   end  
   private
   def expire_cache_for(record)
-    expire_action(:controller => params[:controller], :action => 'index')
+    expire_fragment(:controller => params[:controller])
     #expire_action(:controller => params[:controller], :action => 'show', :id => record.id)
     expire_page(:controller => params[:controller], :action => 'show', :id => record.id)
   end

@@ -2,11 +2,11 @@ class WidgetsController < ApplicationController
    cache_sweeper :app_sweeper
   # GET /widgets
   # GET /widgets.xml
-  caches_action :index
+  #caches_action :index
   caches_page :show
   def index
-    @widgets = Rails.cache.fetch(params.to_a.join(":"),:expires_in=>CACHE_TIMEOUT) do
-      Widget.all
+    @widgets = Rails.cache.fetch(cache_key,:expires_in=>CACHE_TIMEOUT) do
+      Widget.find(:all).paginate(:page => @page, :per_page => 100)
     end
     respond_to do |format|
       format.html # index.html.erb
