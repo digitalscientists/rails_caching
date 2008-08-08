@@ -9,5 +9,11 @@ cache actions, fragments and models.
 Feel free to update as needed.
 
 
+INSTALL
 
+edit database.yml
+
+rake db:create
+rake db:migrate
+rake db:fixtures:load 
   
